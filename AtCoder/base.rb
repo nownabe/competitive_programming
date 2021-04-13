@@ -1,20 +1,22 @@
 class Base
   class << self
-    def run
-      if ENV["ATCODER_TEST"] == "true"
-        test
-      else
-        solve
-      end
+    alias_method :original_new, :new
+
+    def new
+      self
     end
 
-    def test
+    def run
+      test_samples
+    end
+
+    def test_samples
       @samples.each_with_index do |_, i|
         @sample_number = i
         @sample_offset = 0
         @sample_actual = []
 
-        instance = new
+        instance = original_new
         instance.run
 
         puts
@@ -35,10 +37,6 @@ class Base
           puts
         end
       end
-    end
-
-    def solve
-      new.run
     end
 
     def add_sample(input:, expect:)
@@ -78,13 +76,11 @@ class Base
     end
   end
 
-  if ENV["ATCODER_TEST"] == "true"
-    def gets
-      self.class.sample_gets
-    end
+  def gets
+    self.class.sample_gets
+  end
 
-    def puts(s)
-      self.class.sample_puts(s)
-    end
+  def puts(s)
+    self.class.sample_puts(s)
   end
 end
