@@ -54,7 +54,7 @@ class Base
     end
 
     def sample_puts(s)
-      @sample_actual << s
+      @sample_actual.push(*s)
     end
 
     private
