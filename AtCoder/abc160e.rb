@@ -11,9 +11,19 @@ class ABC160E
   end
 
   def run
-    puts solve
+    puts solve2
   end
 
+  # Editorial
+  def solve2
+    reds = @reds.sort[(@a - @x)..-1]
+    greens = @greens.sort[(@b - @y)..-1]
+    whites = @whites.sort
+
+    (reds + greens + whites).sort[@c..-1].sum
+  end
+
+  # AC
   def solve
     reds = @reds.sort[(@a - @x)..-1]
     greens = @greens.sort[(@b - @y)..-1]
