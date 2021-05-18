@@ -10,7 +10,21 @@ class ABC114C
   end
 
   def run
-    puts solve
+    puts solve2
+  end
+
+  # Editorial
+  def solve2
+    dfs("")
+  end
+
+  NUM357 = %w(3 5 7)
+
+  def dfs(num)
+    return 0 if num.to_i > @n
+
+    count = NUM357.all? { |n| num.include?(n) } ? 1 : 0
+    count + NUM357.sum { |n| dfs("#{num}#{n}") }
   end
 
   def solve
