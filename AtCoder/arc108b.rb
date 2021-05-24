@@ -9,9 +9,19 @@ class ARC108B
   end
 
   def run
-    puts solve
+    puts solve2
   end
 
+  def solve2
+    t = ""
+    @s.each_char do |c|
+      t = "#{t}#{c}"
+      t = t[0...-3] if t[-3..-1] == "fox"
+    end
+    t.length
+  end
+
+  # AC
   def solve
     s = @s.dup
 
