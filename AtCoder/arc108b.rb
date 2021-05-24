@@ -9,9 +9,10 @@ class ARC108B
   end
 
   def run
-    puts solve2
+    puts solve
   end
 
+  # Editorial (TLE)
   def solve2
     t = ""
     @s.each_char do |c|
